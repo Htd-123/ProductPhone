@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= productDetails.tieude %></title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      #productContainer {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      #thumbnailContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .thumbnail {
+        width: 80px;
+        height: auto; /* Đảm bảo chiều cao tự động điều chỉnh theo tỷ lệ hình ảnh */
+        cursor: pointer;
+      }
+
+      .thumbnail.active {
+        border: 2px solid #007bff; /* Hiển thị hình ảnh đang chọn với viền màu xanh */
+      }
+
+      #largeImageContainer {
+        flex: 1;
+      }
+
+      .largeImage {
+        max-width: 100%;
+        height: auto;
+      }
+
+      #productDetails {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" style="color: bisque" href="/"
+          >Điện thoại NeshTech</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDarkDropdown"
+          aria-controls="navbarNavDarkDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <button class="btn btn-dark" aria-expanded="false">
+                <a style="text-decoration: none" href="/category/1"
+                  >Điện thoại</a
+                >
+              </button>
+
+              <button class="btn btn-dark" aria-expanded="false">
+                <a style="text-decoration: none" href="/category/2">Laptop</a>
+              </button>
+
+              <button class="btn btn-dark" aria-expanded="false">
+                <a style="text-decoration: none" href="/category/3">Tablet</a>
+              </button>
+
+              <button class="btn btn-dark" aria-expanded="false">
+                <a style="text-decoration: none" href="/category/4">Phụ kiện</a>
+              </button>
+
+              <button class="btn btn-dark" aria-expanded="false">
+                <a style="text-decoration: none" href="/cart">Giỏ hàng</a>
+              </button>
+
+              <button class="btn btn-dark" aria-expanded="false">
+                <a style="text-decoration: none" href="./login">Đăng nhập</a>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      style="margin-top: 150px"
+      id="productContainer"
+      data-product="<%= JSON.stringify(productDetails) %>"
+      class="container"
+    >
+      <div class="row">
+        <!-- Hiển thị mô tả và giá -->
+        <div id="productDetails" class="col-md-6">
+          <h2 class="mb-3"><%= productDetails.tieude %></h2>
+          <p class="mb-2">Giá: <%= productDetails.price %>đ</p>
+          <p>Mô tả: <%= productDetails.mota %></p>
+        </div>
+
+        <!-- Hiển thị hình ảnh lớn -->
+        <div id="largeImageContainer" class="col-md-6">
+          <img
+            id="largeImage"
+            class="largeImage img-fluid"
+            src="<%= productDetails.hinhanh %>"
+            alt="<%= productDetails.tieude %>"
+          />
+        </div>
+      </div>
+     
+      <!-- Hiển thị các hình ảnh nhỏ -->
+      <div id="thumbnailContainer">
+        <% if (productDetails.img && productDetails.img.length > 0) { %> <%
+        productDetails.img.forEach((image, index) => { %>
+        <img
+          class="thumbnail img-fluid"
+          src="<%= image %>"
+          alt="<%= productDetails.tieude %>"
+          data-index="<%= index %>"
+        />
+        <% }); %> <% } else { %>
+        <p>Không có hình ảnh nào cho sản phẩm này.</p>
+        <% } %>
+      </div>
+    </div>
+    
+      <!-- Phần Bình Luận -->
+  <section
+  class="comments-section"
+  style="background-color: #f8f9fa; padding: 40px 0; margin-top: 50px"
+>
+  <div class="container">
+    <h3 class="text-center mb-4">Bình Luận</h3>
+    <!-- Form bình luận -->
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <form action="/" method="post">
+          <div class="mb-3">
+            <label for="commentText" class="form-label">Bình Luận</label>
+            <input
+              class="form-control"
+              id="commentText"
+              rows="3"
+              placeholder="Nhập bình luận của bạn"
+              name="comment"
+            />
+          </div>
+          <div class="text-center">
+            <button
+              type="submit"
+              name="action"
+              value="noidung"
+              class="btn btn-primary"
+            >
+              Gửi Bình Luận
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Hiển thị bình luận -->
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-8">
+        <div class="comment mb-3">
+          <h6>Nguyễn Văn A</h6>
+          <p class="small">Ngày đăng: 2022-01-15</p>
+        </div>
+        <!-- Lặp lại cho các bình luận khác -->
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Bootstrap JS và Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript để xử lý sự kiện khi người dùng chọn hình ảnh nhỏ -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const largeImage = document.getElementById("largeImage");
+        const thumbnailContainer =
+          document.getElementById("thumbnailContainer");
+        const productDetails = JSON.parse(
+          document.getElementById("productContainer").dataset.product
+        );
+
+        if (thumbnailContainer) {
+          thumbnailContainer.addEventListener("click", function (event) {
+            if (
+              event.target.classList.contains("thumbnail") &&
+              productDetails.img &&
+              productDetails.img.length > 0
+            ) {
+              // Loại bỏ class 'active' từ tất cả các hình nhỏ trước khi thêm vào hình nhỏ mới
+              thumbnailContainer
+                .querySelectorAll(".thumbnail")
+                .forEach((thumbnail) => {
+                  thumbnail.classList.remove("active");
+                });
+
+              const selectedIndex = event.target.getAttribute("data-index");
+              const selectedImage = productDetails.img[selectedIndex];
+              largeImage.src = selectedImage;
+
+              // Thêm class 'active' vào hình nhỏ đang được chọn
+              event.target.classList.add("active");
+            }
+          });
+        }
+      });
+    </script>
+
+  </body>
+</html>
