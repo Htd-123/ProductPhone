@@ -295,4 +295,60 @@
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"
   ></script>
+
+  <!-- Đặt mã JavaScript sau khi đã đảm bảo tất cả các phần tử đã được tải -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const addToCartButtons = document.querySelectorAll(
+        ".btn-outline-primary"
+      );
+
+      addToCartButtons.forEach((button) => {
+        button.addEventListener("click", function (event) {
+          // Kiểm tra trạng thái đăng nhập ở đây
+          const isAuthenticated = "<%= username %>"; // Sử dụng biến username trực tiếp
+
+          // Nếu người dùng đã đăng nhập, không làm gì cả
+          if (isAuthenticated) {
+            return true;
+          } else {
+            // Ngăn chặn hành động mặc định của nút
+            event.preventDefault();
+
+            // Hiển thị thông báo yêu cầu đăng nhập
+            alert("Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng.");
+          }
+        });
+      });
+    });
+  </script>
+  <!-- Chức năng xử lý nút button load sản phẩm -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const products = document.querySelectorAll(".product-card"); // Lấy tất cả các sản phẩm
+
+      // Ẩn tất cả các sản phẩm sau sản phẩm thứ 16
+      for (let i = 16; i < products.length; i++) {
+        products[i].classList.add("d-none");
+      }
+
+      // Xử lý sự kiện khi nhấp vào nút "Xem thêm sản phẩm"
+      const loadMoreButton = document.getElementById("loadMore");
+      loadMoreButton.addEventListener("click", function () {
+        const hiddenProducts = document.querySelectorAll(
+          ".product-card.d-none"
+        ); // Lấy tất cả các sản phẩm đã bị ẩn
+
+        // Hiển thị thêm 8 sản phẩm nếu có đủ sản phẩm để hiển thị
+        for (let i = 0; i < 8 && i < hiddenProducts.length; i++) {
+          hiddenProducts[i].classList.remove("d-none");
+        }
+
+        // Ẩn nút "Xem thêm sản phẩm" nếu không còn sản phẩm để hiển thị
+        if (document.querySelectorAll(".product-card.d-none").length === 0) {
+          loadMoreButton.style.display = "none";
+        }
+      });
+    });
+  </script>
 </html>

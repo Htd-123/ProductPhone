@@ -4,7 +4,9 @@ const mongoose = require("mongoose");
 
 const comments = new mongoose.Schema(
   {
-    binhluan: { type: String },
+    productId: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
+    username: String,
+    commentText: String,
   },
   { versionKey: false, timestamps: true }
 );

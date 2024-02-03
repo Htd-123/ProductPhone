@@ -4,7 +4,9 @@ const mongoose = require("mongoose");
 
 const bills = new mongoose.Schema(
   {
+    user: { type: String},
     tieude: [{ type: String }],
+    totalprice: { type: Number },
   },
   { versionKey: false, timestamps: true }
 );

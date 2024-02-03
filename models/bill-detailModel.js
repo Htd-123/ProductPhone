@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const Bill_detail = new mongoose.Schema(
   {
     titlewebsite: { type: String },
+    tieude: [{ type: String }],
   },
   { versionKey: false, timestamps: true }
 );

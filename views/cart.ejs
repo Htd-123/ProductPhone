@@ -1,226 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <style>
-      /* Tùy chỉnh cho input group */
-      .quantity .input-group {
-        display: flex;
-        justify-content: center;
-        align-items: stretch; /* Đảm bảo các thành phần co giãn đầy đủ */
-      }
 
-      /* Tùy chỉnh cho button */
-      .quantity .btn {
-        flex: 0 0 auto; /* Không cho phép button co giãn */
-        padding: 0.375rem 0.75rem; /* Điều chỉnh kích thước padding */
-        border-radius: 0.25rem; /* Bo góc */
-        border: 1px solid #ced4da; /* Đặt màu viền */
-        margin: 0; /* Xóa margin mặc định của Bootstrap */
-        line-height: 1; /* Điều chỉnh line-height để giữ icon ở giữa */
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+</head>
 
-      /* Điều chỉnh kích thước và bo tròn cho text trong button */
-      .quantity .btn span {
-        display: block;
-        min-width: 10px; /* Đặt chiều rộng tối thiểu cho nội dung */
-      }
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" style="color: bisque" href="/">Điện thoại NeshTech</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown"
+        aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <button class="btn btn-dark" aria-expanded="false">
+              <a style="text-decoration: none" href="/category/1">Điện thoại</a>
+            </button>
 
-      /* Tùy chỉnh cho input */
-      .quantity .form-control {
-        flex: 1 0 auto; /* Cho phép input co giãn */
-        width: 0px; /* Tự động điều chỉnh chiều rộng */
-        padding: 0px; /* Điều chỉnh padding */
-        text-align: center;
-        border-radius: 0.25rem; /* Bo góc */
-        border: 1px solid #ced4da; /* Đặt màu viền */
-      }
+            <button class="btn btn-dark" aria-expanded="false">
+              <a style="text-decoration: none" href="/category/2">Laptop</a>
+            </button>
 
-      /* Điều chỉnh màu sắc cho button khi hover và focus */
-      .quantity .btn-outline-secondary:hover,
-      .quantity .btn-outline-secondary:focus {
-        background-color: #f8f9fa; /* Màu nền khi hover hoặc focus */
-        border-color: #f8f9fa; /* Màu viền khi hover hoặc focus */
-      }
+            <button class="btn btn-dark" aria-expanded="false">
+              <a style="text-decoration: none" href="/category/3">Tablet</a>
+            </button>
 
-      .delete-button-column {
-        margin-left: 20px; /* Điều chỉnh giá trị khoảng cách theo ý muốn */
-      }
-    </style>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" style="color: bisque" href="/"
-          >Điện thoại NeshTech</a
-        >
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavDarkDropdown"
-          aria-controls="navbarNavDarkDropdown"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <button class="btn btn-dark" aria-expanded="false">
-                <a style="text-decoration: none" href="/category/1"
-                  >Điện thoại</a
-                >
-              </button>
+            <button class="btn btn-dark" aria-expanded="false">
+              <a style="text-decoration: none" href="/category/4">Phụ kiện</a>
+            </button>
 
-              <button class="btn btn-dark" aria-expanded="false">
-                <a style="text-decoration: none" href="/category/2">Laptop</a>
-              </button>
+            <button class="btn btn-dark" aria-expanded="false">
+              <a style="text-decoration: none" href="/cart">Giỏ hàng</a>
+            </button>
 
-              <button class="btn btn-dark" aria-expanded="false">
-                <a style="text-decoration: none" href="/category/3">Tablet</a>
-              </button>
-
-              <button class="btn btn-dark" aria-expanded="false">
-                <a style="text-decoration: none" href="/category/4">Phụ kiện</a>
-              </button>
-
-              <button class="btn btn-dark" aria-expanded="false">
-                <a style="text-decoration: none" href="/cart">Giỏ hàng</a>
-              </button>
-
-              <button class="btn btn-dark" aria-expanded="false">
-                <a style="text-decoration: none" href="./login">Đăng nhập</a>
-              </button>
-            </li>
-          </ul>
-        </div>
+            <button class="btn btn-dark" aria-expanded="false">
+              <a style="text-decoration: none" href="./login">Đăng nhập</a>
+            </button>
+          </li>
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <table class="table" style="margin-top: 150px">
-      <thead>
-        <tr>
-          <th scope="col">Hình ảnh</th>
-          <th scope="col">Tên sản phẩm</th>
-          <th scope="col">Giá</th>
-          <th scope="col">Số lượng</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <!-- Xử lý hiện sản phẩm trong giỏ hàng -->
-      <tbody>
-        <% cartList.forEach(cartList => { %>
-        <tr>
-          <td>
-            <img
-              src="<%= cartList.hinhanh %>"
-              alt="Product Image"
-              style="width: 100px; height: auto"
-            />
-          </td>
-          <td><%= cartList.tieude %></td>
-          <td><%= cartList.price %></td>
-          <!-- Thực hiện chức năng tăng số lượng sản phẩm -->
-          <td class="quantity">
-            <div class="input-group">
-              <button
-                class="btn btn-outline-secondary"
-                type="button"
-                id="decrementButton"
-                onclick="decrementQuantity(this)"
-              >
-                <span>-</span>
-              </button>
-              <input
-              input
-              type="text"
-              class="form-control"
-              value="1"
-              name="quantity"
-              readonly
-              oninput="calculateTotal()"
-              />
-              <button
-                class="btn btn-outline-secondary"
-                type="button"
-                id="incrementButton"
-                onclick="incrementQuantity(this)"
-              >
-                <span>+</span>
-              </button>
-            </div>
-          </td>
-          <!-- Thực hiện chức năng xóa sản phẩm trong giỏ hàng -->
-          <td class="delete-button-column">
-            <form action="cart" method="POST">
-              <input
-                type="hidden"
-                name="cart_title"
-                value="<%= cartList.tieude %>"
-              />
-              <button
-                type="submit"
-                name="action"
-                value="cart_delete"
-                class="btn btn-danger"
-              >
-                Xóa
-              </button>
-            </form>
-          </td>
-        </tr>
-        <% }); %>
-
-            <!-- Thêm tfoot vào bảng -->
-            <tfoot>
-              <!-- Thêm dòng này dưới tfoot của bảng -->
-              <tr>
-                <td colspan="3"></td>
-                <td>Tổng cộng:</td>
-                <td id="totalPrice">0</td>
-                <td></td>
-              </tr>
-            </tfoot>
-      </tbody>
-    </table>
-    <!-- Xử lý mua hàng trong giỏ hàng -->
-    <form action="cart" method="post">
+  <table class="table" style="margin-top: 150px">
+    <thead>
+      <tr>
+        <th scope="col">Hình ảnh</th>
+        <th scope="col">Tên sản phẩm</th>
+        <th scope="col">Giá</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <!-- Xử lý hiển thị sản phẩm trong giỏ hàng -->
+    <tbody>
       <% cartList.forEach(cartItem => { %>
-      <input
-        type="hidden"
-        name="productTitles[]"
-        value="<%= cartItem.tieude %>"
-      />
+      <tr>
+        <td>
+          <img src="<%= cartItem.hinhanh %>" alt="Product Image" style="width: 100px; height: auto" />
+        </td>
+        <td><%= cartItem.tieude %></td>
+        <td><%= cartItem.price %></td>
+        <!-- Thực hiện chức năng xóa sản phẩm trong giỏ hàng -->
+        <td class="delete-button-column">
+          <form action="cart" method="POST" onsubmit="updateTotalOnDelete()">
+            <input type="hidden" name="cart_title" value="<%= cartItem.tieude %>" />
+            <button type="submit" name="action" value="cart_delete" class="btn btn-danger">Xóa</button>
+          </form>
+        </td>
+      </tr>
       <% }); %>
-      <div
-        style="
-          display: flex;
-          justify-content: flex-end;
-          margin-top: 30px;
-          margin-right: 70px;
-        "
-      >
-        <button
-          type="submit"
-          name="action"
-          value="buyproduct"
-          class="btn btn-success"
-        >
-          Mua Hàng +
-        </button>
-      </div>
-    </form>
-  </body>
+
+      <!-- Thêm tfoot vào bảng -->
+      <tfoot>
+        <!-- Thêm dòng này dưới tfoot của bảng -->
+        <tr>
+          <td colspan="2"></td>
+          <td>Tổng cộng:</td>
+          <td id="totalPrice">0</td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </tbody>
+  </table>
+
+  <!-- Xử lý mua hàng trong giỏ hàng -->
+  <form action="cart" method="post">
+    <% cartList.forEach(cartItem => { %>
+    <input type="hidden" name="productTitles[]" value="<%= cartItem.tieude %>" />
+    <% }); %>
+    <div style="display: flex; justify-content: flex-end; margin-top: 30px; margin-right: 70px;">
+      <button type="submit" name="action" value="buyproduct" class="btn btn-success">Mua Hàng +</button>
+    </div>
+  </form>
+
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -236,48 +115,38 @@
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"
   ></script>
-  <!-- Hàm xử lý nút tăng giảm số lượng -->
+
   <script>
-    function incrementQuantity(button) {
-    const input = button.parentNode.querySelector('input[name="quantity"]');
-    const newValue = parseInt(input.value, 10) + 1;
-    input.value = newValue;
-    calculateTotal(); // Gọi lại hàm tính tổng
-  }
+    // Hàm tính tổng
+    function calculateTotal() {
+      // Lấy tất cả các hàng trong tbody
+      const rows = document.querySelectorAll('tbody tr');
+      let totalPrice = 0;
 
-  function decrementQuantity(button) {
-    const input = button.parentNode.querySelector('input[name="quantity"]');
-    const newValue = parseInt(input.value, 10) - 1;
-    input.value = Math.max(1, newValue);
-    calculateTotal(); // Gọi lại hàm tính tổng
-  }
+      // Duyệt qua từng hàng và tính tổng
+      rows.forEach(row => {
+        const priceElement = row.querySelector('td:nth-child(3)'); // Cột giá
 
+        if (priceElement) {
+          const price = parseFloat(priceElement.textContent.replace(/\D/g, '')); // Lấy giá và chuyển đổi thành số
 
-     // Hàm tính tổng
-  function calculateTotal() {
-    // Lấy tất cả các hàng trong tbody
-    const rows = document.querySelectorAll('tbody tr');
-    let totalPrice = 0;
+          totalPrice += price;
+        }
+      });
 
-    // Duyệt qua từng hàng và tính tổng
-    rows.forEach(row => {
-      const priceElement = row.querySelector('td:nth-child(3)'); // Cột giá
-      const quantityElement = row.querySelector('td.quantity input'); // Ô input số lượng
+      // Hiển thị tổng cộng và loại bỏ .00 ở cuối
+      document.getElementById('totalPrice').textContent = totalPrice.toFixed(2).replace(/\.00$/, '');
+    }
 
-      if (priceElement && quantityElement) {
-        const price = parseFloat(priceElement.textContent.replace(/\D/g, '')); // Lấy giá và chuyển đổi thành số
-        const quantity = parseInt(quantityElement.value, 10); // Lấy số lượng và chuyển đổi thành số
+    // Gọi hàm tính tổng khi trang được tải
+    document.addEventListener('DOMContentLoaded', calculateTotal);
 
-        totalPrice += price * quantity;
-      }
-    });
-
-    // Hiển thị tổng cộng và loại bỏ .00 ở cuối
-    document.getElementById('totalPrice').textContent = totalPrice.toFixed(2).replace(/\.00$/, '');
-  }
-
-  // Gọi hàm tính tổng khi trang được tải
-  document.addEventListener('DOMContentLoaded', calculateTotal);
+    // Hàm cập nhật tổng khi xóa sản phẩm
+    function updateTotalOnDelete() {
+      calculateTotal();
+    }
   </script>
-   
+
+</body>
+
 </html>

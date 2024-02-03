@@ -33,6 +33,24 @@
     </style>
   </head>
   <body>
+    <% if (typeof message_add !== 'undefined' || typeof message_delete !== 'undefined' || typeof message_update !== 'undefined') { %>
+      <% if (typeof message_add !== 'undefined') { %>
+        <div class="alert alert-success" role="alert">
+          <%= message_add %>
+        </div>
+      <% } %>
+      <% if (typeof message_delete !== 'undefined') { %>
+        <div class="alert alert-success" role="alert">
+          <%= message_delete %>
+        </div>
+      <% } %>
+      <% if (typeof message_update !== 'undefined') { %>
+        <div class="alert alert-success" role="alert">
+          <%= message_update %>
+        </div>
+      <% } %>
+    <% } %>
+    
     <div class="container">
       <div class="header">
         <h2>Quản Lý Sản Phẩm</h2>
